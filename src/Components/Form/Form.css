@@ -1,0 +1,44 @@
+.dictionary {
+  max-width: 850px;
+  margin: 0 auto;
+  margin-bottom: 25px;
+  padding: 50px;
+  background-color: #dde9e2;
+  box-shadow: 0 0 10px 0 rgba(17, 2, 2, 0.2);
+  outline-offset: -10px;
+  border-radius: 15px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+}
+
+input {
+  padding: 10px;
+  margin-right: 10px; 
+  width: 400px;
+}
+
+button {
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+
