@@ -1,0 +1,25 @@
+.section-phonetics {
+    text-align: center;
+  }
+  
+  .license-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .license-info {
+    position: absolute;
+    background: #f0f0f0;
+    padding: 5px;
+    display: none;
+    z-index: 1;
+  }
+  
+  .license-button:hover .license-info {
+    display: block;
+  }
+  
