@@ -1,4 +1,5 @@
-import { IMeaning } from "../interfaces/IMeaning.interface";
+import { IMeaning } from "../../interfaces/IMeaning.interface";
+import './definition.css';
 
 interface MeaningItemProps {
   meaning: IMeaning;
@@ -14,12 +15,12 @@ export default function Definitions({ meaning }: MeaningItemProps) {
           <li style={{ listStyle: "none", marginTop: "1rem" }} key={subIndex}>
             <p style={{ marginTop: "8px" }}>- {definition.definition}</p>
             {definition.synonyms.length > 0 && (
-              <p style={{ fontWeight: "bold", marginTop: "5px" }}>
+              <p className="synonyms-antonyms">
                 Synonyms: <span>{definition.synonyms.join(", ")}</span>
               </p>
             )}
             {definition.antonyms.length > 0 && (
-              <p style={{ fontWeight: "bold", marginTop: "5px" }}>
+              <p className="synonyms-antonyms">
                 Antonyms: <span>{definition.antonyms.join(", ")}</span>
               </p>
             )}
@@ -33,12 +34,12 @@ export default function Definitions({ meaning }: MeaningItemProps) {
       </ul>
 
       {meaning.synonyms.length > 0 && (
-        <p style={{ fontWeight: "bold", marginTop: "5px" }}>
+        <p className="synonyms-antonyms">
           Synonyms: <span>{meaning.synonyms.join(", ")}</span>
         </p>
       )}
       {meaning.antonyms.length > 0 && (
-        <p style={{ fontWeight: "bold", marginTop: "5px" }}>
+        <p className="synonyms-antonyms">
           Antonyms: <span>{meaning.antonyms.join(", ")}</span>
         </p>
       )}
