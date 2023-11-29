@@ -23,13 +23,13 @@ h2 {
 
 form {
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
   align-items: center;
 }
 
 input {
   padding: 10px;
-  margin-right: 10px; 
+  margin-right: 10px;
   width: 400px;
 }
 
@@ -40,5 +40,3 @@ button {
   border: none;
   cursor: pointer;
 }
-
-
