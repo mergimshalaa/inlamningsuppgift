@@ -1,10 +1,11 @@
 import { IMeaning } from "../../interfaces/IMeaning.interface";
 import './definition.css';
 
-interface MeaningItemProps {
+interface IMeaningItemProps {
   meaning: IMeaning;
 }
-export default function Definitions({ meaning }: MeaningItemProps) {
+
+export default function Definitions({ meaning }: IMeaningItemProps) {
   return (
     <div>
       <p style={{ fontWeight: "bold", fontSize: "2rem", marginTop: "2rem" }}>
@@ -25,14 +26,14 @@ export default function Definitions({ meaning }: MeaningItemProps) {
               </p>
             )}
             {definition.example && (
-              <p style={{ fontStyle: "italic", marginTop: "3px" }}>
+              <p style={{ fontStyle: "italic", marginLeft: '1rem', marginTop: "5px" }}>
                 Example: <span>{definition.example}</span>
               </p>
             )}
           </li>
         ))}
       </ul>
-
+  
       {meaning.synonyms.length > 0 && (
         <p className="synonyms-antonyms">
           Synonyms: <span>{meaning.synonyms.join(", ")}</span>
@@ -43,6 +44,7 @@ export default function Definitions({ meaning }: MeaningItemProps) {
           Antonyms: <span>{meaning.antonyms.join(", ")}</span>
         </p>
       )}
+      <hr style={{ marginTop: "2rem" }} />
     </div>
   );
 }

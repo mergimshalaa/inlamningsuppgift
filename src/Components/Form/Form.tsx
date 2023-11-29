@@ -77,14 +77,13 @@ export default function Form() {
               <div>
                 <div style={{ textAlign: "center" }}>
                   <p style={{ fontSize: "2rem" }}>{result.word}</p>
-                  <hr style={{ marginBottom: "1rem" }} />
+                  <hr style={{ marginTop: "5px" }} />
                 </div>
                 {result.meanings.map((meaning, index) => (
             <Definitions key={index} meaning={meaning} />
           ))}
               </div>
             </div>
-            <hr style={{ marginTop: "2rem" }} />
             {result.phonetics?.length > 0 && (
             
               <div style={{marginTop: '3rem'}}>
