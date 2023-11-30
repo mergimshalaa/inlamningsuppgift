@@ -9,14 +9,15 @@ describe('App', () => {
       render(<App />);
       const user = userEvent.setup();
       
+      // Get the search input and assert its initial state
       const searchInput = screen.getByPlaceholderText('Enter a word...');
       expect(searchInput).toBeInTheDocument();
       expect(searchInput).toHaveValue('');
     
+      // Get the search button, click it, and wait for the error message
       const searchButton = screen.getByRole('button', { name: /Search/i });
       expect(searchButton).toBeInTheDocument();
       await user.click(searchButton);
-
       const errorMessage = await screen.findByText('Empty Search');
       expect(errorMessage).toBeInTheDocument();
     });
@@ -25,17 +26,20 @@ describe('App', () => {
         render(<App />);
         const user = userEvent.setup();
 
+        // Get the search input and assert its initial state
         const searchInput = screen.getByPlaceholderText('Enter a word...');
         expect(searchInput).toBeInTheDocument();
         expect(searchInput).toHaveValue('');
+        
+        // Type an incorrect word in the search-input, wait for the value to be updated
         await user.type(searchInput, 'hellooo');
         await waitFor(() => expect(searchInput).toHaveValue('hellooo'));
       
+        // Get the search button, click it, and wait for the error message to be displayed
         const searchButton = screen.getByRole('button', { name: /Search/i });
         expect(searchButton).toBeInTheDocument();
         await user.click(searchButton);
-
         const errorMessage = await screen.findByText('No Definitions Found');
         expect(errorMessage).toBeInTheDocument();
-      });
-  });
+    });
+});

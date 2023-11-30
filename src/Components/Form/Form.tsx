@@ -6,7 +6,16 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import PhoneticsSection from "../Phonetics/Phonetics";
 import "./Form.css";
 
+/**
+ * Form Component for Word Definitions
+ * 
+ * This component allows users to search for word definitions using a dictionary API.
+ * It includes a form for input, error handling, and displays the result after fetching the data.
+ * 
+ */
+
 export default function Form() {
+  // State variables for dictionary form
   const [word, setWord] = useState("");
   const [response, setResponse] = useState<IApiResponse[] | null>(null);
   const [error, setError] = useState<IErrResponseMessage | null>(null);
@@ -15,15 +24,16 @@ export default function Form() {
   const fetchData = async () => {
     try {
       if (!word.trim()) throw new Error("Empty Search");
-  
+
       const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
       const data = await response.json();
-  
+
       if (data?.length) {
         setResponse(data);
         setShowDefinition(true);
         setError(null);
       } else {
+        // Handle no definitions found when serching for a wrong or incorrect word
         setResponse(null);
         setError({
           title: "No Definitions Found",
@@ -41,7 +51,7 @@ export default function Form() {
       });
     }
   };
-  
+
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setWord(e.target.value);
   };
@@ -67,35 +77,36 @@ export default function Form() {
           </form>
         </div>
       </section>
+      {/*------------ Display error message if there is an error--------------- */}
       {error && <ErrorMessage title={error.title} message={error.message} resolution={error.resolution} />}
 
+      {/*--------------- Display definitions if available------------------ */}
       {showDefinition && response && (
-        response.map((result: IApiResponse, index: number) => ( 
-        <div data-testid="search-word">
-          <section className="dictionary">
-            <div>
+        response.map((result: IApiResponse, index: number) => (
+          <div data-testid="search-word" key={index}>
+            <section className="dictionary">
               <div>
-                <div style={{ textAlign: "center" }}>
-                  <p style={{ fontSize: "2rem" }}>{result.word}</p>
-                  <hr style={{ marginTop: "5px" }} />
+                {/*------------- Mapping word and meanings -----------------*/}
+                <div>
+                  <div style={{ textAlign: "center" }}>
+                    <p style={{ fontSize: "2rem" }}>{result.word}</p>
+                    <hr style={{ marginTop: "5px" }} />
+                  </div>
+                  {result.meanings.map((meaning, index) => (
+                    <Definitions key={index} meaning={meaning} />
+                  ))}
                 </div>
-                {result.meanings.map((meaning, index) => (
-            <Definitions key={index} meaning={meaning} />
-          ))}
               </div>
-            </div>
-            {result.phonetics?.length > 0 && (
-            
-              <div style={{marginTop: '3rem'}}>
-                <PhoneticsSection
-                  word={result.word}
-                  phonetics={result.phonetics}
-                />
-              </div>
-          )}
-          </section>
-
-        </div>
+              {result.phonetics?.length > 0 && (
+                <div style={{ marginTop: '3rem' }}>
+                  <PhoneticsSection
+                    word={result.word}
+                    phonetics={result.phonetics}
+                  />
+                </div>
+              )}
+            </section>
+          </div>
         ))
       )}
     </div>
