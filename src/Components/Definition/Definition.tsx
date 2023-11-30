@@ -26,7 +26,7 @@ export default function Definitions({ meaning }: IMeaningItemProps) {
               </p>
             )}
             {definition.example && (
-              <p style={{ fontStyle: "italic", marginLeft: '1rem', marginTop: "5px" }}>
+              <p style={{ fontStyle: "italic", marginLeft: '1.5rem' }}>
                 Example: <span>{definition.example}</span>
               </p>
             )}
