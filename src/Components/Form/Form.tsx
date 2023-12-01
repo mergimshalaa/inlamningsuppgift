@@ -89,7 +89,7 @@ export default function Form() {
                 {/*------------- Mapping word and meanings -----------------*/}
                 <div>
                   <div style={{ textAlign: "center" }}>
-                    <p style={{ fontSize: "2rem" }}>{result.word}</p>
+                    <p style={{ fontSize: "2rem", fontWeight: 'bold' }}>{result.word}</p>
                     <hr style={{ marginTop: "5px" }} />
                   </div>
                   {result.meanings.map((meaning, index) => (

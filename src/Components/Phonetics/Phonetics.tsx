@@ -35,7 +35,7 @@ export default function PhoneticsSection({ word, phonetics }: IPhoneticsProps) {
               {phonetic.audio && (
                 <FontAwesomeIcon
                   data-testid="speaker-phonetics"
-                  style={{ marginRight: '5px' }}
+                  style={{ marginRight: '5px', cursor: 'pointer' }}
                   icon={faVolumeUp}
                   onClick={() => new Audio(phonetic.audio).play()}
                 />
