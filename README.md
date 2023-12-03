@@ -35,3 +35,7 @@ Testning
 [x] [G] Koden ska vara väl kommenterad.
 
 [ ] [VG] Koden är väl skriven och har en bra struktur.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Click here for demo ---> https://ms-dictionary-app.netlify.app/
